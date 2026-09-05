@@ -1,49 +1,437 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Meine GitHub Pages Seite</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 700px;
-      margin: 60px auto;
-      padding: 0 20px;
-      line-height: 1.6;
-      color: #222;
-      background-color: #fafafa;
-    }
-    h1 {
-      color: #24292e;
-    }
-    a {
-      color: #0366d6;
-    }
-    footer {
-      margin-top: 40px;
-      font-size: 0.9em;
-      color: #666;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alexander Mate — Analytics &amp; Data Leadership</title>
+<meta name="description" content="Senior Manager at Deloitte leading enterprise analytics, cloud and BI programs across banking, retail, public sector and healthcare since 2012.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23FFFFFF' stroke='%23E4E2DC' stroke-width='2'/%3E%3Ctext x='32' y='40' font-family='Georgia,serif' font-size='24' fill='%23181A1D' text-anchor='middle'%3EM%3Ctspan fill='%239C7A32'%3E8%3C/tspan%3E%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,440;0,9..144,500;1,9..144,440;1,9..144,480&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FFFFFF;
+    --surface:#F7F6F3;
+    --ink:#181A1D;
+    --ink-soft:#4E5158;
+    --slate:#888C92;
+    --slate-dim:#AFB2B7;
+    --line:#E7E5E0;
+    --line-strong:#D8D5CE;
+    --brass:#9C7A32;
+    --brass-soft:rgba(156,122,50,0.10);
+    --serif:'Fraunces', Georgia, serif;
+    --sans:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --maxw:1180px;
+    --pad:clamp(24px, 5vw, 80px);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{display:block; max-width:100%;}
+  a{color:inherit; text-decoration:none;}
+  ul{margin:0; padding:0; list-style:none;}
+  h1,h2,h3,h4{margin:0; font-family:var(--serif); font-weight:460; letter-spacing:-0.01em; color:var(--ink);}
+  p{margin:0;}
+
+  .skip-link{
+    position:absolute; left:-9999px; top:auto;
+    background:var(--ink); color:var(--bg); padding:10px 16px; z-index:200; font-weight:600;
+  }
+  .skip-link:focus{left:16px; top:16px;}
+
+  :focus-visible{outline:2px solid var(--brass); outline-offset:3px;}
+
+  .wrap{max-width:var(--maxw); margin:0 auto; padding-left:var(--pad); padding-right:var(--pad);}
+
+  .progress{
+    position:fixed; top:0; left:0; height:1px; width:100%;
+    background:var(--line); z-index:100;
+  }
+  .progress__bar{height:100%; width:0%; background:var(--brass);}
+
+  /* Nav */
+  .nav{
+    position:sticky; top:0; z-index:90;
+    background:rgba(255,255,255,0.86);
+    backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav__row{display:flex; align-items:center; justify-content:space-between; height:72px;}
+  .nav__mark{font-family:var(--serif); font-style:italic; font-weight:480; font-size:21px; color:var(--ink);}
+  .nav__mark span{color:var(--brass); font-style:normal;}
+  .nav__links{display:flex; align-items:center; gap:32px;}
+  .nav__links a{font-size:14px; color:var(--slate); position:relative; padding:4px 0; transition:color .2s ease;}
+  .nav__links a:hover{color:var(--ink);}
+  .nav__links a.is-active{color:var(--ink);}
+  .nav__links a.is-active::after{content:''; position:absolute; left:0; right:0; bottom:-3px; height:1px; background:var(--brass);}
+  .nav__cta{font-size:13.5px; font-weight:500; color:var(--ink); border:1px solid var(--line-strong); padding:9px 18px; border-radius:2px; transition:border-color .2s ease, color .2s ease;}
+  .nav__cta:hover{border-color:var(--brass); color:var(--brass);}
+
+  /* Hero */
+  .hero{border-bottom:1px solid var(--line);}
+  .hero__inner{display:grid; grid-template-columns:1.05fr 0.95fr; align-items:center; min-height:600px; gap:40px;}
+  .hero__content{padding:110px 0 60px;}
+  .hero__content h1{font-size:clamp(38px, 4.4vw, 56px); line-height:1.12; max-width:15ch; font-weight:440;}
+  .hero__lead{margin-top:24px; max-width:44ch; font-size:18px; color:var(--ink-soft); line-height:1.65;}
+  .hero__personal{margin-top:16px; max-width:44ch; font-size:15px; color:var(--slate); font-family:var(--serif); font-style:italic; font-weight:440;}
+  .hero__ctas{display:flex; gap:14px; margin-top:36px; flex-wrap:wrap;}
+  .btn{display:inline-flex; align-items:center; justify-content:center; padding:13px 24px; font-size:14px; font-weight:500; border-radius:2px; transition:transform .2s ease, background .2s ease, color .2s ease, border-color .2s ease;}
+  .btn--primary{background:var(--ink); color:var(--bg);}
+  .btn--primary:hover{background:var(--brass); transform:translateY(-1px);}
+  .btn--ghost{border:1px solid var(--line-strong); color:var(--ink);}
+  .btn--ghost:hover{border-color:var(--brass); color:var(--brass); transform:translateY(-1px);}
+
+  .hero__graphic{position:relative; height:100%; min-height:420px;}
+  .hero__graphic svg{position:absolute; top:50%; right:calc(var(--pad) * -1); transform:translateY(-50%); width:min(620px, 52vw); height:auto; max-width:none;}
+  .chart-line{fill:none; stroke:var(--ink-soft); stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round;}
+  .chart-node{fill:var(--bg); stroke:var(--ink-soft); stroke-width:1.6;}
+  .chart-node--peak{stroke:var(--brass); fill:var(--brass);}
+
+  /* Stats */
+  .stats{border-bottom:1px solid var(--line);}
+  .stats__row{display:grid; grid-template-columns:repeat(3, 1fr);}
+  .stats__item{padding:32px var(--pad); border-left:1px solid var(--line);}
+  .stats__item:first-child{border-left:none; padding-left:var(--pad);}
+  .stats__num{font-family:var(--serif); font-size:28px; color:var(--ink); font-weight:460;}
+  .stats__label{margin-top:6px; font-size:13.5px; color:var(--slate); max-width:26ch;}
+
+  /* Section shell */
+  .section{padding:100px 0; border-top:1px solid var(--line);}
+  .section__head{max-width:600px; margin-bottom:52px;}
+  .section__head h2{font-size:clamp(26px, 2.6vw, 34px); font-weight:440;}
+  .section__head p{margin-top:14px; color:var(--slate); font-size:16px; max-width:52ch;}
+
+  /* About */
+  .about__grid{display:grid; grid-template-columns:0.9fr 1.1fr; gap:60px;}
+  .about__lead h2{font-size:clamp(26px,2.6vw,34px); max-width:11ch; font-weight:440;}
+  .about__body p{color:var(--ink-soft); font-size:17px; margin-bottom:20px; max-width:56ch;}
+  .about__body p:last-child{margin-bottom:0;}
+
+  /* Focus */
+  .focus-grid{display:grid; grid-template-columns:repeat(3, 1fr);}
+  .focus-item{padding:0 32px 0 0; border-right:1px solid var(--line);}
+  .focus-item:last-child{border-right:none;}
+  .focus-item:not(:first-child){padding-left:32px;}
+  .focus-icon{width:30px; height:30px; color:var(--ink-soft); margin-bottom:20px;}
+  .focus-item h3{font-size:18px; font-weight:600; font-family:var(--sans); letter-spacing:0;}
+  .focus-item p{margin-top:12px; color:var(--slate); font-size:14.5px; line-height:1.65;}
+
+  /* Work */
+  .work__featured{padding:44px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); display:grid; grid-template-columns:1.15fr 0.85fr; gap:48px; align-items:center; margin-bottom:0;}
+  .work__meta{font-size:13px; color:var(--brass); font-weight:600; margin-bottom:14px;}
+  .work__featured h3{font-size:26px; max-width:14ch; font-weight:440;}
+  .work__featured p{margin-top:16px; color:var(--ink-soft); font-size:15.5px; max-width:52ch;}
+  .work__spark{width:100%; height:auto;}
+  .work__grid{display:grid; grid-template-columns:repeat(3, 1fr);}
+  .work-card{padding:32px 32px 32px 0; border-right:1px solid var(--line); border-top:2px solid transparent; transition:border-top-color .25s ease, transform .25s ease;}
+  .work-card:nth-child(3){border-right:none;}
+  .work-card:not(:first-child){padding-left:32px;}
+  .work-card:hover{border-top-color:var(--brass); transform:translateY(-2px);}
+  .work-card h4{font-size:17px; max-width:16ch; font-weight:600; font-family:var(--sans); letter-spacing:0;}
+  .work-card p{margin-top:12px; color:var(--slate); font-size:14px; line-height:1.6;}
+  .work-card .work__meta{margin-bottom:12px;}
+
+  /* Career */
+  .timeline{position:relative; padding-left:32px;}
+  .timeline::before{content:''; position:absolute; left:4px; top:6px; bottom:6px; width:1px; background:var(--line);}
+  .timeline__item{position:relative; padding-bottom:42px;}
+  .timeline__item:last-child{padding-bottom:0;}
+  .timeline__dot{position:absolute; left:-32px; top:5px; width:9px; height:9px; border-radius:50%; background:var(--bg); border:1.5px solid var(--slate-dim); transition:border-color .4s ease, background .4s ease;}
+  .timeline__item.is-visible .timeline__dot{border-color:var(--brass); background:var(--brass-soft);}
+  .timeline__year{font-size:13px; color:var(--brass); font-weight:600; letter-spacing:0.01em;}
+  .timeline__item h4{margin-top:8px; font-size:18px; font-weight:460;}
+  .timeline__item .timeline__place{margin-top:4px; color:var(--slate); font-size:13.5px;}
+  .timeline__item p{margin-top:12px; color:var(--ink-soft); font-size:15px; max-width:60ch;}
+
+  /* Toolkit */
+  .toolkit__grid{display:grid; grid-template-columns:repeat(4, 1fr);}
+  .toolkit__group{padding:0 24px 0 0; border-right:1px solid var(--line);}
+  .toolkit__group:last-child{border-right:none;}
+  .toolkit__group:not(:first-child){padding-left:24px;}
+  .toolkit__group h4{font-size:13px; font-family:var(--sans); font-weight:600; color:var(--slate);}
+  .toolkit__group ul{margin-top:16px;}
+  .toolkit__group li{font-size:15px; color:var(--ink-soft); padding:5px 0;}
+  .toolkit__cert{margin-top:16px; padding-top:14px; border-top:1px solid var(--line); font-size:12.5px; color:var(--slate); line-height:1.5;}
+
+  /* Contact */
+  .contact{background:var(--surface); border-top:1px solid var(--line);}
+  .contact__inner{padding:100px 0 76px;}
+  .contact h2{font-size:clamp(32px, 3.8vw, 48px); max-width:12ch; font-weight:440;}
+  .contact p.lead{margin-top:18px; color:var(--ink-soft); font-size:17px; max-width:52ch;}
+  .contact__links{display:flex; flex-wrap:wrap; gap:36px; margin-top:44px;}
+  .contact__links a{font-size:15.5px; color:var(--ink); border-bottom:1px solid var(--line-strong); padding-bottom:4px; transition:border-color .2s ease, color .2s ease;}
+  .contact__links a:hover{border-color:var(--brass); color:var(--brass);}
+  .contact__meta{margin-top:10px; font-size:13px; color:var(--slate);}
+
+  .footer{padding:26px var(--pad); display:flex; justify-content:space-between; align-items:center; font-size:12.5px; color:var(--slate); background:var(--surface);}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+
+  @media (max-width:1024px){
+    .hero__inner{grid-template-columns:1fr; min-height:auto;}
+    .hero__graphic{min-height:280px; order:-1;}
+    .hero__graphic svg{position:relative; right:auto; top:auto; transform:none; width:100%; margin-top:16px;}
+    .hero__content{padding:52px 0 36px;}
+    .about__grid{grid-template-columns:1fr; gap:28px;}
+    .focus-grid{grid-template-columns:1fr;}
+    .focus-item{border-right:none; border-bottom:1px solid var(--line); padding:28px 0;}
+    .focus-item:not(:first-child){padding-left:0;}
+    .work__featured{grid-template-columns:1fr;}
+    .work__grid{grid-template-columns:1fr;}
+    .work-card{border-right:none; border-bottom:1px solid var(--line); padding:28px 0;}
+    .work-card:not(:first-child){padding-left:0;}
+    .toolkit__grid{grid-template-columns:repeat(2, 1fr); row-gap:32px;}
+    .toolkit__group{border-right:none;}
+    .toolkit__group:nth-child(odd){padding-right:24px;}
+    .toolkit__group:nth-child(even){padding-left:24px;}
+    .stats__row{grid-template-columns:1fr;}
+    .stats__item{border-left:none; border-top:1px solid var(--line);}
+    .stats__item:first-child{border-top:none;}
+    .nav__links{display:none;}
+  }
+  @media (max-width:640px){
+    .toolkit__grid{grid-template-columns:1fr;}
+    .toolkit__group{padding-left:0 !important; padding-right:0 !important; border-bottom:1px solid var(--line); padding-bottom:24px;}
+    .contact__links{flex-direction:column; gap:18px;}
+    .footer{flex-direction:column; gap:8px; align-items:flex-start;}
+  }
+</style>
 </head>
 <body>
 
-  <h1>Willkommen auf meiner Seite!</h1>
-  <p>Das ist eine einfache Beispiel-Startseite, gehostet mit GitHub Pages.</p>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="progress"><div class="progress__bar" id="progressBar"></div></div>
 
-  <h2>Über mich</h2>
-  <p>Hier kannst du kurz erzählen, wer du bist oder woran du arbeitest.</p>
+<header class="nav">
+  <div class="wrap nav__row">
+    <a class="nav__mark" href="#top">Alexander Mate<span></span></a>
+    <nav class="nav__links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#focus">Focus</a>
+      <a href="#career">Career</a>
+    </nav>
+    <!-- <a class="nav__cta" href="#contact">Get in touch</a> -->
+  </div>
+</header>
 
-  <h2>Links</h2>
-  <ul>
-    <li><a href="https://github.com/">GitHub</a></li>
-    <li><a href="mailto:deine-email@example.com">Kontakt</a></li>
-  </ul>
+<main id="main">
 
-  <footer>
-    <p>&copy; 2026 Dein Name</p>
-  </footer>
+  <section class="hero" id="top">
+    <div class="wrap hero__inner">
+      <div class="hero__content">
+        <h1>hi, <span style="color: #9c7a32;">Alex</span> here.</h1>
+        <p class="hero__lead">I build data and analytics solutions for clients at Deloitte by day, and geek out at tech stuff by night. Occasionally both happen at the same time.</p>
+        <p class="hero__personal">no grand origin story. no life-changing hackathon. In my free time I'm a dad, I cycle and I play way too many battle royale video games.</p>
+
+      </div>
+      <div class="hero__graphic" id="heroGraphic">
+        <svg viewBox="0 0 560 380" id="heroChart" role="img" aria-label="Abstract analytics trend chart">
+          <path class="chart-line" id="heroChartMain" d="M20,320 L100,280 L180,295 L260,210 L340,230 L420,120 L500,60" pathLength="1000" style="stroke-dasharray:1000; stroke-dashoffset:1000;"></path>
+          <circle class="chart-node" cx="20" cy="320" r="3.5"></circle>
+          <circle class="chart-node" cx="100" cy="280" r="3.5"></circle>
+          <circle class="chart-node" cx="180" cy="295" r="3.5"></circle>
+          <circle class="chart-node" cx="260" cy="210" r="3.5"></circle>
+          <circle class="chart-node" cx="340" cy="230" r="3.5"></circle>
+          <circle class="chart-node" cx="420" cy="120" r="3.5"></circle>
+          <circle class="chart-node chart-node--peak" cx="500" cy="60" r="5"></circle>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+
+
+  <section class="section" id="about" style="border-top:none;">
+    <div class="wrap about__grid">
+      <div class="about__lead">
+        <h2>How I work</h2>
+      </div>
+      <div class="about__body">
+        <p>I've spent the last 15 years in the messy middle of enterprise IT, where ambitious data strategy and digital transformations meets legacy systems, competing stakeholders and real deadlines. My job is making the two sides meet without anyone's timeline exploding.</p>
+        <p>That means running scrum meetings with the team in the morning and reviewing data architecture with engineers in the afternoon. I care more about whether a reporting landscape survives and is easy to maintain than whether its architecture diagram looks clean in the deck.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="focus">
+    <div class="wrap">
+      <div class="section__head">
+        <h2>Where I add the most value</h2>
+      </div>
+      <div class="focus-grid">
+        <div class="focus-item">
+          <svg class="focus-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4">
+            <circle cx="24" cy="10" r="5"></circle>
+            <circle cx="10" cy="36" r="5"></circle>
+            <circle cx="38" cy="36" r="5"></circle>
+            <path d="M24 15v8M24 23L13 32M24 23l11 9"></path>
+          </svg>
+          <h3>Leadership &amp; Delivery</h3>
+          <p>Planning, governing and delivering complex end-to-end analytics and IT programs — requirements, architecture, compliance and team leadership, using both classic and agile methods.</p>
+        </div>
+        <div class="focus-item">
+          <svg class="focus-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4">
+            <rect x="9" y="8" width="30" height="8" rx="1.5"></rect>
+            <rect x="9" y="20" width="30" height="8" rx="1.5"></rect>
+            <rect x="9" y="32" width="30" height="8" rx="1.5"></rect>
+          </svg>
+          <h3>Data engineering &amp; BI platforms</h3>
+          <p>Hands-on delivery across SAP BW, Power BI, Tableau and Qlik — from data model to the dashboard someone actually opens every morning.</p>
+        </div>
+        <div class="focus-item">
+          <svg class="focus-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M14 30a7 7 0 0 1-1-13.9A9 9 0 0 1 30 12a7.5 7.5 0 0 1 4 14.5"></path>
+            <path d="M14 30h20"></path>
+            <path d="M20 34l3 4 5-7"></path>
+          </svg>
+          <h3>Operability &amp; maintainability</h3>
+          <p>I design analytics and cloud solutions with an eye on what happens after go-live — automated, well-documented, and simple enough for a lean team to run without me standing over it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="career">
+    <div class="wrap">
+      <div class="section__head">
+        <h2>Career</h2>
+      </div>
+      <div class="timeline">
+		        <div class="timeline__item">
+          <span class="timeline__dot"></span>
+          <div class="timeline__year">2012 – Present</div>
+          <h4>Senior Manager / Senior Specialist Lead</h4>
+          <div class="timeline__place">Deloitte Consulting GmbH, Düsseldorf</div>
+          <p>Planning, governing and delivering complex analytics and IT programs across banking, retail, public sector and healthcare.</p>
+        </div>
+        <div class="timeline__item">
+          <span class="timeline__dot"></span>
+          <div class="timeline__year">2010 – 2012</div>
+          <h4>Project Consultant (BI)</h4>
+          <div class="timeline__place">MODUS Consult AG, Gütersloh</div>
+          <p>Built reporting and analytics applications in Qlik and supported several Microsoft Dynamics ERP implementations, from requirements through training.</p>
+        </div>
+		        <div class="timeline__item">
+          <span class="timeline__dot"></span>
+          <div class="timeline__year">2009</div>
+          <h4>Global Account Management Analyst (Internship)</h4>
+          <div class="timeline__place">Lufthansa Cargo AG, Atlanta, USA</div>
+          <p>Analyzed logistics data and built reporting for the global account management team's top thirty customers across North and South America.</p>
+        </div>
+        <div class="timeline__item">
+          <span class="timeline__dot"></span>
+          <div class="timeline__year">2006 – 2010</div>
+          <h4>B.A. International Management with Engineering</h4>
+          <div class="timeline__place">Fachhochschule Südwestfalen</div>
+          <p>An international, practice-oriented program with a business and data focus, built around cross-functional project and interface work.</p>
+        </div>
+		
+      </div>
+    </div>
+  </section>
+
+
+
+  <section class="contact" id="contact">
+    <div class="wrap contact__inner">
+      <!-- <h2>Contact.</h2> -->
+      <div class="contact__links">
+        <a href="mailto:alexander.mate@live.de">Email</a>
+        <a href="https://www.linkedin.com/in/alexandermate" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://m8ai.github.io" target="_blank" rel="noopener">GitHub</a>
+		<a href="https://www.instagram.com/a.mate/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+      <div class="contact__meta"> </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <span>© 2026 Alexander Mate</span>
+  <span>Built by hand, with a bit of help from AI.</span>
+</footer>
+
+<script>
+  const progressBar = document.getElementById('progressBar');
+  function updateProgress(){
+    const h = document.documentElement;
+    const scrolled = h.scrollTop;
+    const height = h.scrollHeight - h.clientHeight;
+    const pct = height > 0 ? (scrolled / height) * 100 : 0;
+    progressBar.style.width = pct + '%';
+  }
+  document.addEventListener('scroll', updateProgress, { passive:true });
+  updateProgress();
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  window.addEventListener('load', () => {
+    const main = document.getElementById('heroChartMain');
+    if (reduceMotion) {
+      if(main){ main.style.transition='none'; main.style.strokeDashoffset='0'; }
+      return;
+    }
+    requestAnimationFrame(() => {
+      if (main){
+        main.style.transition = 'stroke-dashoffset 1.7s cubic-bezier(.16,.84,.32,1) 0.2s';
+        main.style.strokeDashoffset = '0';
+      }
+    });
+  });
+
+  if (!reduceMotion && window.matchMedia('(min-width: 1025px)').matches) {
+    const graphic = document.getElementById('heroGraphic');
+    const heroSection = document.querySelector('.hero');
+    heroSection.addEventListener('mousemove', (e) => {
+      const rect = heroSection.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      graphic.style.transform = `translate(${x * -8}px, ${y * -6}px)`;
+    });
+    heroSection.addEventListener('mouseleave', () => {
+      graphic.style.transform = 'translate(0,0)';
+    });
+  }
+
+  const sections = ['about','focus','work','career','toolkit'].map(id => document.getElementById(id));
+  const navLinks = Array.from(document.querySelectorAll('.nav__links a'));
+  const spy = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const link = navLinks.find(a => a.getAttribute('href') === '#' + entry.target.id);
+      if (!link) return;
+      if (entry.isIntersecting) {
+        navLinks.forEach(a => a.classList.remove('is-active'));
+        link.classList.add('is-active');
+      }
+    });
+  }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
+  sections.forEach(s => s && spy.observe(s));
+
+  const timelineItems = document.querySelectorAll('.timeline__item');
+  const tlObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        tlObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+  timelineItems.forEach(item => tlObserver.observe(item));
+</script>
 
 </body>
 </html>
