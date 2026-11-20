@@ -103,10 +103,6 @@
 
   .hero__graphic{position:relative; align-self:stretch; display:flex; flex-direction:column; justify-content:flex-end;}
   .hero__graphic svg{width:100%; height:auto; transition:transform .6s var(--ease-out);}
-  .hero__meta{display:flex; justify-content:space-between; align-items:baseline; margin-top:18px;
-    border-top:3px solid var(--black); padding-top:14px;}
-  .hero__meta .label{color:var(--gray); letter-spacing:3px; font-size:11px;}
-  .hero__meta .display{font-size:clamp(26px, 2.6vw, 38px);}
   .chart-grid{stroke:var(--black); stroke-opacity:.08; stroke-width:1;}
   .chart-line{fill:none; stroke:var(--black); stroke-width:5; stroke-linecap:butt; stroke-linejoin:miter;}
   .chart-node{fill:var(--cream); stroke:var(--black); stroke-width:3;}
@@ -290,10 +286,6 @@
             <circle class="chart-node" cx="420" cy="120" r="6"></circle>
             <circle class="chart-node chart-node--peak" cx="500" cy="60" r="11"></circle>
           </svg>
-          <div class="hero__meta">
-            <span class="label">Senior Manager · Deloitte</span>
-            <span class="display">SINCE 2012</span>
-          </div>
         </div>
       </div>
     </div>
@@ -438,7 +430,6 @@
 
 <footer class="footer">
   <span>© 2026 Alexander Mate</span>
-  <span>Built by hand, with a bit of help from AI.</span>
 </footer>
 
 <script>
