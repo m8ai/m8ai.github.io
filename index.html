@@ -1,38 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">      
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Alexander Mate — Analytics &amp; Data</title>
 <meta name="description" content="Senior Manager at Deloitte leading enterprise analytics, cloud and BI programs across banking, retail, public sector and healthcare since 2012.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23FFFFFF' stroke='%23E4E2DC' stroke-width='2'/%3E%3Ctext x='32' y='40' font-family='Georgia,serif' font-size='24' fill='%23181A1D' text-anchor='middle'%3EM%3Ctspan fill='%239C7A32'%3E8%3C/tspan%3E%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23E85D5D'/%3E%3Ctext x='32' y='45' font-family='Impact,Arial Narrow,sans-serif' font-size='34' fill='%231A1A1A' text-anchor='middle'%3EM8%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,440;0,9..144,500;1,9..144,440;1,9..144,480&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#FFFFFF;
-    --surface:#F7F6F3;
-    --ink:#181A1D;
-    --ink-soft:#4E5158;
-    --slate:#888C92;
-    --slate-dim:#AFB2B7;
-    --line:#E7E5E0;
-    --line-strong:#D8D5CE;
-    --brass:#9C7A32;
-    --brass-soft:rgba(156,122,50,0.10);
-    --serif:'Fraunces', Georgia, serif;
-    --sans:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    --maxw:1180px;
-    --pad:clamp(24px, 5vw, 80px);
+    --coral:#E85D5D;
+    --coral-dark:#B23A3A;   /* small coral text on cream (AA) */
+    --cream:#F5F0E8;
+    --cream-dark:#E8E0D4;
+    --warm-white:#FFFDF7;
+    --black:#1A1A1A;
+    --gray:#5E5A52;
+    --gray-on-dark:#A8A39A;
+    --display:'Bebas Neue', Impact, 'Arial Narrow', sans-serif;
+    --sans:'Archivo', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --ease-out:cubic-bezier(.16, 1, .3, 1);
+    --maxw:1280px;
+    --pad:clamp(20px, 7vw, 100px);
   }
 
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{
     margin:0;
-    background:var(--bg);
-    color:var(--ink);
+    background:var(--cream);
+    color:var(--black);
     font-family:var(--sans);
     font-size:16px;
     line-height:1.65;
@@ -41,138 +40,203 @@
   img,svg{display:block; max-width:100%;}
   a{color:inherit; text-decoration:none;}
   ul{margin:0; padding:0; list-style:none;}
-  h1,h2,h3,h4{margin:0; font-family:var(--serif); font-weight:460; letter-spacing:-0.01em; color:var(--ink);}
+  h1,h2,h3,h4{margin:0; font-weight:400;}
   p{margin:0;}
 
   .skip-link{
     position:absolute; left:-9999px; top:auto;
-    background:var(--ink); color:var(--bg); padding:10px 16px; z-index:200; font-weight:600;
+    background:var(--black); color:var(--cream); padding:10px 16px; z-index:200; font-weight:600;
   }
   .skip-link:focus{left:16px; top:16px;}
-
-  :focus-visible{outline:2px solid var(--brass); outline-offset:3px;}
+  :focus-visible{outline:3px solid var(--black); outline-offset:3px;}
 
   .wrap{max-width:var(--maxw); margin:0 auto; padding-left:var(--pad); padding-right:var(--pad);}
 
-  .progress{
-    position:fixed; top:0; left:0; height:1px; width:100%;
-    background:var(--line); z-index:100;
+  .label{
+    font-size:12px; font-weight:700; letter-spacing:4px; text-transform:uppercase;
+    color:var(--coral-dark);
   }
-  .progress__bar{height:100%; width:0%; background:var(--brass);}
+  .display{font-family:var(--display); letter-spacing:2px; line-height:0.95;}
+
+  /* Progress */
+  .progress{position:fixed; top:0; left:0; height:4px; width:100%; z-index:100; pointer-events:none;}
+  .progress__bar{height:100%; width:0%; background:var(--coral);}
 
   /* Nav */
   .nav{
     position:sticky; top:0; z-index:90;
-    background:rgba(255,255,255,0.86);
-    backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
-    border-bottom:1px solid var(--line);
+    background:var(--cream);
+    border-bottom:3px solid var(--black);
   }
-  .nav__row{display:flex; align-items:center; justify-content:space-between; height:72px;}
-  .nav__mark{font-family:var(--serif); font-style:italic; font-weight:480; font-size:21px; color:var(--ink);}
-  .nav__mark span{color:var(--brass); font-style:normal;}
-  .nav__links{display:flex; align-items:center; gap:32px;}
-  .nav__links a{font-size:14px; color:var(--slate); position:relative; padding:4px 0; transition:color .2s ease;}
-  .nav__links a:hover{color:var(--ink);}
-  .nav__links a.is-active{color:var(--ink);}
-  .nav__links a.is-active::after{content:''; position:absolute; left:0; right:0; bottom:-3px; height:1px; background:var(--brass);}
-  .nav__cta{font-size:13.5px; font-weight:500; color:var(--ink); border:1px solid var(--line-strong); padding:9px 18px; border-radius:2px; transition:border-color .2s ease, color .2s ease;}
-  .nav__cta:hover{border-color:var(--brass); color:var(--brass);}
+  .nav__row{display:flex; align-items:center; justify-content:space-between; height:68px;}
+  .nav__mark{font-family:var(--display); font-size:28px; letter-spacing:2px; line-height:1;}
+  .nav__mark span{color:var(--coral);}
+  .nav__links{display:flex; align-items:center; gap:36px;}
+  .nav__links a{
+    font-size:12px; font-weight:700; letter-spacing:3px; text-transform:uppercase;
+    color:var(--gray); position:relative; padding:6px 0; transition:color .3s var(--ease-out);
+  }
+  .nav__links a:hover, .nav__links a.is-active{color:var(--black);}
+  .nav__links a::after{
+    content:''; position:absolute; left:0; right:0; bottom:-2px; height:3px; background:var(--coral);
+    transform:scaleX(0); transform-origin:left; transition:transform .4s var(--ease-out);
+  }
+  .nav__links a.is-active::after{transform:scaleX(1);}
 
   /* Hero */
-  .hero{border-bottom:1px solid var(--line);}
-  .hero__inner{display:grid; grid-template-columns:1.05fr 0.95fr; align-items:center; min-height:600px; gap:40px;}
-  .hero__content{padding:110px 0 60px;}
-  .hero__content h1{font-size:clamp(38px, 4.4vw, 56px); line-height:1.12; max-width:15ch; font-weight:440;}
-  .hero__lead{margin-top:24px; max-width:44ch; font-size:18px; color:var(--ink-soft); line-height:1.65;}
-  .hero__personal{margin-top:16px; max-width:44ch; font-size:15px; color:var(--slate); font-family:var(--serif); font-style:italic; font-weight:440;}
-  .hero__ctas{display:flex; gap:14px; margin-top:36px; flex-wrap:wrap;}
-  .btn{display:inline-flex; align-items:center; justify-content:center; padding:13px 24px; font-size:14px; font-weight:500; border-radius:2px; transition:transform .2s ease, background .2s ease, color .2s ease, border-color .2s ease;}
-  .btn--primary{background:var(--ink); color:var(--bg);}
-  .btn--primary:hover{background:var(--brass); transform:translateY(-1px);}
-  .btn--ghost{border:1px solid var(--line-strong); color:var(--ink);}
-  .btn--ghost:hover{border-color:var(--brass); color:var(--brass); transform:translateY(-1px);}
+  .hero__band{
+    background:var(--coral); position:relative; overflow:hidden;
+    height:clamp(120px, 24vh, 240px);
+  }
+  .hero__band svg{position:absolute; inset:0; width:100%; height:100%; max-width:none;}
+  .hero__band .wrap{position:relative; z-index:2; padding-top:clamp(20px, 3.5vh, 40px);}
+  .hero__brand{font-size:12px; font-weight:700; letter-spacing:4px; opacity:.75;}
 
-  .hero__graphic{position:relative; height:100%; min-height:420px;}
-  .hero__graphic svg{position:absolute; top:50%; right:calc(var(--pad) * -1); transform:translateY(-50%); width:min(620px, 52vw); height:auto; max-width:none;}
-  .chart-line{fill:none; stroke:var(--ink-soft); stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round;}
-  .chart-node{fill:var(--bg); stroke:var(--ink-soft); stroke-width:1.6;}
-  .chart-node--peak{stroke:var(--brass); fill:var(--brass);}
+  .hero__body{border-bottom:3px solid var(--black);}
+  .hero__inner{display:grid; grid-template-columns:1.1fr 0.9fr; gap:40px; align-items:end;
+    padding-top:clamp(36px, 6vh, 72px); padding-bottom:clamp(40px, 7vh, 80px);}
+  .hero__title{font-family:var(--display); font-size:clamp(76px, 12vw, 176px); line-height:0.88; letter-spacing:4px;}
+  .hero__title span{color:var(--coral);}
+  .hero__rule{height:3px; background:var(--black); opacity:.15; margin:clamp(20px, 3vh, 32px) 0;}
+  .hero__lead{max-width:46ch; font-size:clamp(16px, 1.4vw, 19px); color:var(--black); line-height:1.65;}
+  .hero__personal{margin-top:14px; max-width:46ch; font-size:15px; color:var(--gray); line-height:1.65;}
 
-  /* Stats */
-  .stats{border-bottom:1px solid var(--line);}
-  .stats__row{display:grid; grid-template-columns:repeat(3, 1fr);}
-  .stats__item{padding:32px var(--pad); border-left:1px solid var(--line);}
-  .stats__item:first-child{border-left:none; padding-left:var(--pad);}
-  .stats__num{font-family:var(--serif); font-size:28px; color:var(--ink); font-weight:460;}
-  .stats__label{margin-top:6px; font-size:13.5px; color:var(--slate); max-width:26ch;}
+  .hero__graphic{position:relative; align-self:stretch; display:flex; flex-direction:column; justify-content:flex-end;}
+  .hero__graphic svg{width:100%; height:auto; transition:transform .6s var(--ease-out);}
+  .hero__meta{display:flex; justify-content:space-between; align-items:baseline; margin-top:18px;
+    border-top:3px solid var(--black); padding-top:14px;}
+  .hero__meta .label{color:var(--gray); letter-spacing:3px; font-size:11px;}
+  .hero__meta .display{font-size:clamp(26px, 2.6vw, 38px);}
+  .chart-grid{stroke:var(--black); stroke-opacity:.08; stroke-width:1;}
+  .chart-line{fill:none; stroke:var(--black); stroke-width:5; stroke-linecap:butt; stroke-linejoin:miter;}
+  .chart-node{fill:var(--cream); stroke:var(--black); stroke-width:3;}
+  .chart-node--peak{fill:var(--coral); stroke:var(--black); stroke-width:4;}
 
-  /* Section shell */
-  .section{padding:100px 0; border-top:1px solid var(--line);}
-  .section__head{max-width:600px; margin-bottom:52px;}
-  .section__head h2{font-size:clamp(26px, 2.6vw, 34px); font-weight:440;}
-  .section__head p{margin-top:14px; color:var(--slate); font-size:16px; max-width:52ch;}
+  /* Sections */
+  .section{padding:clamp(72px, 11vh, 120px) 0;}
+  .section__head{margin-bottom:clamp(36px, 6vh, 56px);}
+  .section__head .label{margin-bottom:14px;}
+  .section__title{font-family:var(--display); font-size:clamp(48px, 6.5vw, 88px); line-height:1; letter-spacing:2px;}
 
-  /* About */
-  .about__grid{display:grid; grid-template-columns:0.9fr 1.1fr; gap:60px;}
-  .about__lead h2{font-size:clamp(26px,2.6vw,34px); max-width:11ch; font-weight:440;}
-  .about__body p{color:var(--ink-soft); font-size:17px; margin-bottom:20px; max-width:56ch;}
-  .about__body p:last-child{margin-bottom:0;}
+  /* About: coral / black split */
+  .about{display:grid; grid-template-columns:1fr 1fr; background:var(--black); padding:0;}
+  .about__left{
+    background:var(--coral); position:relative; overflow:hidden;
+    padding:clamp(48px, 8vh, 96px) clamp(28px, 5vw, 72px);
+    display:flex; flex-direction:column; justify-content:space-between; gap:40px;
+    min-height:clamp(380px, 60vh, 560px);
+  }
+  .about__left::before{
+    content:''; position:absolute; top:-50%; right:-30%; width:80%; height:200%;
+    background:repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(0,0,0,.06) 20px, rgba(0,0,0,.06) 40px);
+  }
+  .about__num{font-family:var(--display); font-size:clamp(110px, 15vw, 220px); line-height:.85; color:rgba(0,0,0,.14); position:relative;}
+  .about__left h2{font-family:var(--display); font-size:clamp(48px, 6vw, 88px); line-height:.95; letter-spacing:2px; position:relative;}
+  .about__right{
+    padding:clamp(48px, 8vh, 96px) clamp(28px, 5vw, 72px);
+    display:flex; flex-direction:column; justify-content:center; gap:28px;
+  }
+  .about__right .label{color:var(--coral); letter-spacing:3px; font-size:11px; margin-bottom:-16px;}
+  .about__right p{color:var(--cream); font-size:clamp(15px, 1.25vw, 18px); line-height:1.7; max-width:54ch;}
 
-  /* Focus */
-  .focus-grid{display:grid; grid-template-columns:repeat(3, 1fr);}
-  .focus-item{padding:0 32px 0 0; border-right:1px solid var(--line);}
-  .focus-item:last-child{border-right:none;}
-  .focus-item:not(:first-child){padding-left:32px;}
-  .focus-icon{width:30px; height:30px; color:var(--ink-soft); margin-bottom:20px;}
-  .focus-item h3{font-size:18px; font-weight:600; font-family:var(--sans); letter-spacing:0;}
-  .focus-item p{margin-top:12px; color:var(--slate); font-size:14.5px; line-height:1.65;}
+  /* Focus: three cards */
+  .focus-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:clamp(16px, 2.4vw, 32px);}
+  .focus-card{
+    background:var(--warm-white); border-top:5px solid var(--coral);
+    padding:clamp(24px, 3vw, 40px); display:flex; flex-direction:column;
+    transition:transform .4s var(--ease-out);
+  }
+  .focus-card:hover{transform:translateY(-4px);}
+  .focus-card__icon{
+    width:52px; height:52px; background:var(--coral); color:var(--black);
+    display:flex; align-items:center; justify-content:center; margin-bottom:24px;
+  }
+  .focus-card__icon svg{width:32px; height:32px;}
+  .focus-card h3{font-family:var(--display); font-size:clamp(28px, 2.5vw, 36px); line-height:1.05; letter-spacing:1px; margin-bottom:12px;}
+  .focus-card p{color:var(--gray); font-size:clamp(14px, 1.05vw, 16px); line-height:1.65; flex:1;}
+  .focus-card__num{font-family:var(--display); font-size:clamp(40px, 4vw, 56px); color:var(--coral); line-height:1; padding-top:24px;}
 
-  /* Career */
-  .timeline{position:relative; padding-left:32px;}
-  .timeline::before{content:''; position:absolute; left:4px; top:6px; bottom:6px; width:1px; background:var(--line);}
-  .timeline__item{position:relative; padding-bottom:42px;}
+  /* Career: timeline */
+  .career{background:var(--cream-dark);}
+  .timeline{position:relative; padding-left:clamp(64px, 9vw, 120px);}
+  .timeline::before{
+    content:''; position:absolute; left:calc(clamp(28px, 4vw, 48px) - 2px); top:0; bottom:0; width:4px;
+    background:repeating-linear-gradient(180deg, var(--black) 0, var(--black) 20px, transparent 20px, transparent 30px);
+  }
+  .timeline__item{position:relative; padding-bottom:clamp(40px, 6vh, 56px);}
   .timeline__item:last-child{padding-bottom:0;}
-  .timeline__dot{position:absolute; left:-32px; top:5px; width:9px; height:9px; border-radius:50%; background:var(--bg); border:1.5px solid var(--slate-dim); transition:border-color .4s ease, background .4s ease;}
-  .timeline__item.is-visible .timeline__dot{border-color:var(--brass); background:var(--brass-soft);}
-  .timeline__year{font-size:13px; color:var(--brass); font-weight:600; letter-spacing:0.01em;}
-  .timeline__item h4{margin-top:8px; font-size:18px; font-weight:460;}
-  .timeline__item .timeline__place{margin-top:4px; color:var(--slate); font-size:13.5px;}
-  .timeline__item p{margin-top:12px; color:var(--ink-soft); font-size:15px; max-width:60ch;}
+  .timeline__bubble{
+    position:absolute; left:calc(clamp(28px, 4vw, 48px) - clamp(64px, 9vw, 120px)); top:0;
+    transform:translateX(-50%);
+    width:clamp(52px, 6vw, 76px); height:clamp(52px, 6vw, 76px); border-radius:50%;
+    background:var(--cream); border:4px solid var(--black);
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--display); font-size:clamp(20px, 2vw, 28px); line-height:1;
+    transition:background-color .5s var(--ease-out);
+  }
+  .timeline__item.is-visible .timeline__bubble{background:var(--coral);}
+  .timeline__card{background:var(--warm-white); border-left:4px solid var(--coral); padding:clamp(20px, 2.4vw, 32px) clamp(20px, 2.8vw, 36px); max-width:820px;}
+  .timeline__year{font-size:12px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--coral-dark);}
+  .timeline__card h4{font-family:var(--display); font-size:clamp(28px, 3vw, 40px); line-height:1.05; letter-spacing:1px; margin-top:8px;}
+  .timeline__place{margin-top:4px; color:var(--gray); font-size:13.5px; font-weight:600; letter-spacing:.5px;}
+  .timeline__card p{margin-top:12px; color:var(--gray); font-size:15px; max-width:62ch;}
 
-  /* Contact */
-  .contact{background:var(--surface); border-top:1px solid var(--line);}
-  .contact__inner{padding:100px 0 76px;}
-  .contact h2{font-size:clamp(32px, 3.8vw, 48px); max-width:12ch; font-weight:440;}
-  .contact p.lead{margin-top:18px; color:var(--ink-soft); font-size:17px; max-width:52ch;}
-  .contact__links{display:flex; flex-wrap:wrap; gap:36px; margin-top:44px;}
-  .contact__links a{font-size:15.5px; color:var(--ink); border-bottom:1px solid var(--line-strong); padding-bottom:4px; transition:border-color .2s ease, color .2s ease;}
-  .contact__links a:hover{border-color:var(--brass); color:var(--brass);}
-  .contact__meta{margin-top:10px; font-size:13px; color:var(--slate);}
+  /* Contact: coral / cream split */
+  .contact{display:grid; grid-template-columns:55% 45%; border-top:3px solid var(--black);}
+  .contact__left{
+    background:var(--coral); position:relative; overflow:hidden;
+    padding:clamp(56px, 10vh, 110px) clamp(28px, 6vw, 80px) clamp(96px, 14vh, 140px);
+    display:flex; flex-direction:column; justify-content:center;
+  }
+  .contact__left .label{color:var(--black); opacity:.7; margin-bottom:18px;}
+  .contact__title{font-family:var(--display); font-size:clamp(64px, 9vw, 132px); line-height:.9; letter-spacing:4px;}
+  .contact__zigzag{position:absolute; bottom:0; left:0; width:100%; height:60px; opacity:.2; max-width:none;}
+  .contact__right{
+    background:var(--cream);
+    padding:clamp(48px, 9vh, 100px) clamp(28px, 6vw, 80px);
+    display:flex; flex-direction:column; justify-content:center; gap:28px;
+  }
+  .contact__block .label{color:var(--gray); font-size:11px; letter-spacing:3px; margin-bottom:6px;}
+  .contact__block a{
+    font-family:var(--display); font-size:clamp(26px, 2.8vw, 40px); letter-spacing:2px; line-height:1.1;
+    display:inline-block; border-bottom:3px solid transparent; transition:border-color .3s var(--ease-out), color .3s var(--ease-out);
+    overflow-wrap:anywhere;
+  }
+  .contact__block a:hover{border-color:var(--coral); color:var(--coral-dark);}
 
-  .footer{padding:26px var(--pad); display:flex; justify-content:space-between; align-items:center; font-size:12.5px; color:var(--slate); background:var(--surface);}
+  .footer{
+    background:var(--black); color:var(--gray-on-dark);
+    padding:26px var(--pad); display:flex; justify-content:space-between; align-items:center;
+    font-size:12px; letter-spacing:2px; text-transform:uppercase;
+  }
+
+  /* Entrance motion */
+  .reveal{opacity:0; transform:translateY(22px); transition:opacity .65s var(--ease-out), transform .65s var(--ease-out);}
+  .reveal.is-in{opacity:1; transform:none;}
+  .reveal.d1{transition-delay:.07s;} .reveal.d2{transition-delay:.14s;} .reveal.d3{transition-delay:.21s;}
 
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto;}
+    .reveal{opacity:1; transform:none;}
     *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
   }
 
   @media (max-width:1024px){
-    .hero__inner{grid-template-columns:1fr; min-height:auto;}
-    .hero__graphic{min-height:280px; order:-1;}
-    .hero__graphic svg{position:relative; right:auto; top:auto; transform:none; width:100%; margin-top:16px;}
-    .hero__content{padding:52px 0 36px;}
-    .about__grid{grid-template-columns:1fr; gap:28px;}
+    .hero__inner{grid-template-columns:1fr;}
+    .about{grid-template-columns:1fr;}
+    .about__left{min-height:0;}
     .focus-grid{grid-template-columns:1fr;}
-    .focus-item{border-right:none; border-bottom:1px solid var(--line); padding:28px 0;}
-    .focus-item:not(:first-child){padding-left:0;}
-    .stats__row{grid-template-columns:1fr;}
-    .stats__item{border-left:none; border-top:1px solid var(--line);}
-    .stats__item:first-child{border-top:none;}
-    .nav__links{display:none;}
+    .contact{grid-template-columns:1fr;}
   }
-  @media (max-width:640px){
-    .contact__links{flex-direction:column; gap:18px;}
+  @media (max-width:720px){
+    .nav__links{gap:20px;}
+    .nav__links a{letter-spacing:2px; font-size:11px;}
     .footer{flex-direction:column; gap:8px; align-items:flex-start;}
+  }
+  @media (max-width:480px){
+    .nav__mark{font-size:22px;}
+    .nav__links{gap:14px;}
+    .nav__links a{letter-spacing:1px;}
   }
 </style>
 </head>
@@ -183,144 +247,190 @@
 
 <header class="nav">
   <div class="wrap nav__row">
-    <a class="nav__mark" href="#top">Alexander Mate<span></span></a>
+    <a class="nav__mark" href="#top">Alexander Mate<span>.</span></a>
     <nav class="nav__links" id="navLinks">
       <a href="#about">About</a>
       <a href="#focus">Focus</a>
       <a href="#career">Career</a>
     </nav>
-    <!-- <a class="nav__cta" href="#contact">Get in touch</a> -->
   </div>
 </header>
 
 <main id="main">
 
   <section class="hero" id="top">
-    <div class="wrap hero__inner">
-      <div class="hero__content">
-        <h1>hi, <span style="color: #9c7a32;">Alex</span> here.</h1>
-        <p class="hero__lead">I build data and analytics solutions for clients at Deloitte by day, and geek out at tech stuff by night. Occasionally both happen at the same time.</p>
-        <p class="hero__personal">No grand origin story. No life-changing hackathon. In my free time I'm a dad, I cycle and I play way too many battle royale video games.</p>
-
-      </div>
-      <div class="hero__graphic" id="heroGraphic">
-        <svg viewBox="0 0 560 380" id="heroChart" role="img" aria-label="Abstract analytics trend chart">
-          <path class="chart-line" id="heroChartMain" d="M20,320 L100,280 L180,295 L260,210 L340,230 L420,120 L500,60" pathLength="1000" style="stroke-dasharray:1000; stroke-dashoffset:1000;"></path>
-          <circle class="chart-node" cx="20" cy="320" r="3.5"></circle>
-          <circle class="chart-node" cx="100" cy="280" r="3.5"></circle>
-          <circle class="chart-node" cx="180" cy="295" r="3.5"></circle>
-          <circle class="chart-node" cx="260" cy="210" r="3.5"></circle>
-          <circle class="chart-node" cx="340" cy="230" r="3.5"></circle>
-          <circle class="chart-node" cx="420" cy="120" r="3.5"></circle>
-          <circle class="chart-node chart-node--peak" cx="500" cy="60" r="5"></circle>
-        </svg>
+    <div class="hero__band">
+      <svg viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <polyline points="-50,320 50,120 150,320 250,120 350,320 450,120 550,320 650,120 750,320 850,120 950,320 1050,120 1150,320 1250,120"
+                  fill="none" stroke="#1A1A1A" stroke-width="18" stroke-linejoin="miter" opacity="0.22"/>
+        <polyline points="-50,380 50,180 150,380 250,180 350,380 450,180 550,380 650,180 750,380 850,180 950,380 1050,180 1150,380 1250,180"
+                  fill="none" stroke="#1A1A1A" stroke-width="12" stroke-linejoin="miter" opacity="0.15"/>
+      </svg>
+      <div class="wrap"><div class="hero__brand">ANALYTICS &amp; DATA</div></div>
+    </div>
+    <div class="hero__body">
+      <div class="wrap hero__inner">
+        <div class="hero__content">
+          <h1 class="hero__title reveal">HI, <span>ALEX</span><br>HERE.</h1>
+          <div class="hero__rule reveal d1"></div>
+          <p class="hero__lead reveal d1">I build data and analytics solutions for clients at Deloitte by day, and geek out at tech stuff by night. Occasionally both happen at the same time.</p>
+          <p class="hero__personal reveal d2">No grand origin story. No life-changing hackathon. In my free time I'm a dad, I cycle and I play way too many battle royale video games.</p>
+        </div>
+        <div class="hero__graphic reveal d2" id="heroGraphic">
+          <svg viewBox="0 0 560 380" id="heroChart" role="img" aria-label="Abstract analytics trend chart">
+            <line class="chart-grid" x1="0" y1="95" x2="560" y2="95"></line>
+            <line class="chart-grid" x1="0" y1="190" x2="560" y2="190"></line>
+            <line class="chart-grid" x1="0" y1="285" x2="560" y2="285"></line>
+            <path class="chart-line" id="heroChartMain" d="M20,320 L100,280 L180,295 L260,210 L340,230 L420,120 L500,60" pathLength="1000" style="stroke-dasharray:1000; stroke-dashoffset:1000;"></path>
+            <circle class="chart-node" cx="20" cy="320" r="6"></circle>
+            <circle class="chart-node" cx="100" cy="280" r="6"></circle>
+            <circle class="chart-node" cx="180" cy="295" r="6"></circle>
+            <circle class="chart-node" cx="260" cy="210" r="6"></circle>
+            <circle class="chart-node" cx="340" cy="230" r="6"></circle>
+            <circle class="chart-node" cx="420" cy="120" r="6"></circle>
+            <circle class="chart-node chart-node--peak" cx="500" cy="60" r="11"></circle>
+          </svg>
+          <div class="hero__meta">
+            <span class="label">Senior Manager · Deloitte</span>
+            <span class="display">SINCE 2012</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-
-
-  <section class="section" id="about" style="border-top:none;">
-    <div class="wrap about__grid">
-      <div class="about__lead">
-        <h2>How I work</h2>
-      </div>
-      <div class="about__body">
-        <p>I've spent the last 15 years in the messy middle of enterprise IT, where ambitious data strategy and digital transformations meet legacy systems, old processes and competing stakeholders. My job is making the two sides meet without anyone's Outlook exploding.</p>
-        <p>That means running scrum meetings with the team in the morning and reviewing data architecture with engineers in the afternoon. I care more about whether a reporting landscape survives and is easy to maintain than whether its architecture diagram looks clean in the deck.</p>
-      </div>
+  <section class="about" id="about">
+    <div class="about__left">
+      <div class="about__num">01</div>
+      <h2>HOW I<br>WORK</h2>
+    </div>
+    <div class="about__right">
+      <div class="label reveal">15 years in enterprise IT</div>
+      <p class="reveal d1">I've spent the last 15 years in the messy middle of enterprise IT, where ambitious data strategy and digital transformations meet legacy systems, old processes and competing stakeholders. My job is making the two sides meet without anyone's Outlook exploding.</p>
+      <p class="reveal d2">That means running scrum meetings with the team in the morning and reviewing data architecture with engineers in the afternoon. I care more about whether a reporting landscape survives and is easy to maintain than whether its architecture diagram looks clean in the deck.</p>
     </div>
   </section>
 
   <section class="section" id="focus">
     <div class="wrap">
       <div class="section__head">
-        <h2>Where I add the most value</h2>
+        <div class="label">02 / Focus</div>
+        <h2 class="section__title reveal">WHERE I ADD THE MOST VALUE</h2>
       </div>
       <div class="focus-grid">
-        <div class="focus-item">
-          <svg class="focus-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4">
-            <circle cx="24" cy="10" r="5"></circle>
-            <circle cx="10" cy="36" r="5"></circle>
-            <circle cx="38" cy="36" r="5"></circle>
-            <path d="M24 15v8M24 23L13 32M24 23l11 9"></path>
-          </svg>
-          <h3>Leadership &amp; Delivery</h3>
+        <div class="focus-card reveal">
+          <div class="focus-card__icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+              <circle cx="24" cy="10" r="5"></circle>
+              <circle cx="10" cy="36" r="5"></circle>
+              <circle cx="38" cy="36" r="5"></circle>
+              <path d="M24 15v8M24 23L13 32M24 23l11 9"></path>
+            </svg>
+          </div>
+          <h3>LEADERSHIP &amp; DELIVERY</h3>
           <p>Planning, governing and delivering complex end-to-end analytics and IT programs — requirements, architecture, compliance and team leadership, using both classic and agile methods.</p>
+          <div class="focus-card__num">A</div>
         </div>
-        <div class="focus-item">
-          <svg class="focus-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4">
-            <rect x="9" y="8" width="30" height="8" rx="1.5"></rect>
-            <rect x="9" y="20" width="30" height="8" rx="1.5"></rect>
-            <rect x="9" y="32" width="30" height="8" rx="1.5"></rect>
-          </svg>
-          <h3>Data engineering &amp; BI platforms</h3>
+        <div class="focus-card reveal d1">
+          <div class="focus-card__icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+              <rect x="9" y="8" width="30" height="8"></rect>
+              <rect x="9" y="20" width="30" height="8"></rect>
+              <rect x="9" y="32" width="30" height="8"></rect>
+            </svg>
+          </div>
+          <h3>DATA ENGINEERING &amp; BI PLATFORMS</h3>
           <p>Hands-on delivery across SAP, SQL, PowerBI and Qlik — from data model to the dashboard someone actually opens every morning.</p>
+          <div class="focus-card__num">B</div>
         </div>
-        <div class="focus-item">
-          <svg class="focus-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4">
-            <path d="M14 30a7 7 0 0 1-1-13.9A9 9 0 0 1 30 12a7.5 7.5 0 0 1 4 14.5"></path>
-            <path d="M14 30h20"></path>
-            <path d="M20 34l3 4 5-7"></path>
-          </svg>
-          <h3>Operability &amp; maintainability</h3>
+        <div class="focus-card reveal d2">
+          <div class="focus-card__icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+              <path d="M14 30a7 7 0 0 1-1-13.9A9 9 0 0 1 30 12a7.5 7.5 0 0 1 4 14.5"></path>
+              <path d="M14 30h20"></path>
+              <path d="M20 34l3 4 5-7"></path>
+            </svg>
+          </div>
+          <h3>OPERABILITY &amp; MAINTAINABILITY</h3>
           <p>I design analytics and cloud solutions with an eye on what happens after go-live — automated, well-documented, and simple enough for a lean team to run without me standing next to it.</p>
+          <div class="focus-card__num">C</div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section" id="career">
+  <section class="section career" id="career">
     <div class="wrap">
       <div class="section__head">
-        <h2>Career</h2>
+        <div class="label">03 / Career</div>
+        <h2 class="section__title reveal">CAREER</h2>
       </div>
       <div class="timeline">
-		        <div class="timeline__item">
-          <span class="timeline__dot"></span>
-          <div class="timeline__year">2012 – Present</div>
-          <h4>Senior Manager / Senior Specialist Lead</h4>
-          <div class="timeline__place">Deloitte Consulting GmbH, Düsseldorf</div>
-          <p>Planning, governing and delivering complex analytics and data management projects across banking, retail, public sector and healthcare.</p>
+        <div class="timeline__item">
+          <span class="timeline__bubble">01</span>
+          <div class="timeline__card reveal">
+            <div class="timeline__year">2012 – Present</div>
+            <h4>SENIOR MANAGER / SENIOR SPECIALIST LEAD</h4>
+            <div class="timeline__place">Deloitte Consulting GmbH, Düsseldorf</div>
+            <p>Planning, governing and delivering complex analytics and data management projects across banking, retail, public sector and healthcare.</p>
+          </div>
         </div>
         <div class="timeline__item">
-          <span class="timeline__dot"></span>
-          <div class="timeline__year">2010 – 2012</div>
-          <h4>Project Consultant (BI)</h4>
-          <div class="timeline__place">MODUS Consult AG, Gütersloh</div>
-          <p>Built reporting and analytics applications in Qlik and supported several Microsoft Dynamics ERP implementations, from requirements through training.</p>
-        </div>
-		        <div class="timeline__item">
-          <span class="timeline__dot"></span>
-          <div class="timeline__year">2009</div>
-          <h4>Global Account Management Analyst (Internship)</h4>
-          <div class="timeline__place">Lufthansa Cargo AG, Atlanta, USA</div>
-          <p>Analyzed logistics data and built reporting for the global account management team's top thirty customers across North and South America.</p>
+          <span class="timeline__bubble">02</span>
+          <div class="timeline__card reveal">
+            <div class="timeline__year">2010 – 2012</div>
+            <h4>PROJECT CONSULTANT (BI)</h4>
+            <div class="timeline__place">MODUS Consult AG, Gütersloh</div>
+            <p>Built reporting and analytics applications in Qlik and supported several Microsoft Dynamics ERP implementations, from requirements through training.</p>
+          </div>
         </div>
         <div class="timeline__item">
-          <span class="timeline__dot"></span>
-          <div class="timeline__year">2006 – 2010</div>
-          <h4>B.A. International Management with Engineering</h4>
-          <div class="timeline__place">Fachhochschule Südwestfalen</div>
-          <p>An international, practice-oriented program with a business and data focus, built around cross-functional project and interface work.</p>
+          <span class="timeline__bubble">03</span>
+          <div class="timeline__card reveal">
+            <div class="timeline__year">2009</div>
+            <h4>GLOBAL ACCOUNT MANAGEMENT ANALYST (INTERNSHIP)</h4>
+            <div class="timeline__place">Lufthansa Cargo AG, Atlanta, USA</div>
+            <p>Analyzed logistics data and built reporting for the global account management team's top thirty customers across North and South America.</p>
+          </div>
         </div>
-		
+        <div class="timeline__item">
+          <span class="timeline__bubble">04</span>
+          <div class="timeline__card reveal">
+            <div class="timeline__year">2006 – 2010</div>
+            <h4>B.A. INTERNATIONAL MANAGEMENT WITH ENGINEERING</h4>
+            <div class="timeline__place">Fachhochschule Südwestfalen</div>
+            <p>An international, practice-oriented program with a business and data focus, built around cross-functional project and interface work.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-
-
   <section class="contact" id="contact">
-    <div class="wrap contact__inner">
-      <!-- <h2>Contact.</h2> -->
-      <div class="contact__links">
-        <a href="mailto:alexander.mate@live.de">Email</a>
-        <a href="https://www.linkedin.com/in/alexandermate" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://m8ai.github.io" target="_blank" rel="noopener">GitHub</a>
-		<a href="https://www.instagram.com/a.mate/" target="_blank" rel="noopener">Instagram</a>
+    <div class="contact__left">
+      <div class="label">04 / Contact</div>
+      <h2 class="contact__title reveal">SAY<br>HELLO.</h2>
+      <svg class="contact__zigzag" viewBox="0 0 400 60" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0,30 L40,10 L80,30 L120,10 L160,30 L200,10 L240,30 L280,10 L320,30 L360,10 L400,30 L400,60 L0,60 Z" fill="black"/>
+      </svg>
+    </div>
+    <div class="contact__right">
+      <div class="contact__block reveal">
+        <div class="label">Email</div>
+        <a href="mailto:alexander.mate@live.de">ALEXANDER.MATE@LIVE.DE</a>
       </div>
-      <div class="contact__meta"> </div>
+      <div class="contact__block reveal d1">
+        <div class="label">LinkedIn</div>
+        <a href="https://www.linkedin.com/in/alexandermate" target="_blank" rel="noopener">IN/ALEXANDERMATE</a>
+      </div>
+      <div class="contact__block reveal d2">
+        <div class="label">GitHub</div>
+        <a href="https://m8ai.github.io" target="_blank" rel="noopener">M8AI.GITHUB.IO</a>
+      </div>
+      <div class="contact__block reveal d3">
+        <div class="label">Instagram</div>
+        <a href="https://www.instagram.com/a.mate/" target="_blank" rel="noopener">@A.MATE</a>
+      </div>
     </div>
   </section>
 
@@ -335,50 +445,58 @@
   const progressBar = document.getElementById('progressBar');
   function updateProgress(){
     const h = document.documentElement;
-    const scrolled = h.scrollTop;
     const height = h.scrollHeight - h.clientHeight;
-    const pct = height > 0 ? (scrolled / height) * 100 : 0;
-    progressBar.style.width = pct + '%';
+    progressBar.style.width = (height > 0 ? (h.scrollTop / height) * 100 : 0) + '%';
   }
   document.addEventListener('scroll', updateProgress, { passive:true });
   updateProgress();
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Chart draw-in
   window.addEventListener('load', () => {
     const main = document.getElementById('heroChartMain');
-    if (reduceMotion) {
-      if(main){ main.style.transition='none'; main.style.strokeDashoffset='0'; }
-      return;
-    }
+    if (!main) return;
+    if (reduceMotion) { main.style.transition = 'none'; main.style.strokeDashoffset = '0'; return; }
     requestAnimationFrame(() => {
-      if (main){
-        main.style.transition = 'stroke-dashoffset 1.7s cubic-bezier(.16,.84,.32,1) 0.2s';
-        main.style.strokeDashoffset = '0';
-      }
+      main.style.transition = 'stroke-dashoffset 1.7s cubic-bezier(.16,1,.3,1) 0.3s';
+      main.style.strokeDashoffset = '0';
     });
   });
 
+  // Subtle parallax on the hero chart
   if (!reduceMotion && window.matchMedia('(min-width: 1025px)').matches) {
-    const graphic = document.getElementById('heroGraphic');
-    const heroSection = document.querySelector('.hero');
-    heroSection.addEventListener('mousemove', (e) => {
-      const rect = heroSection.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width - 0.5;
-      const y = (e.clientY - rect.top) / rect.height - 0.5;
-      graphic.style.transform = `translate(${x * -8}px, ${y * -6}px)`;
+    const graphic = document.querySelector('#heroGraphic svg');
+    const hero = document.querySelector('.hero__body');
+    hero.addEventListener('mousemove', (e) => {
+      const r = hero.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5;
+      const y = (e.clientY - r.top) / r.height - 0.5;
+      graphic.style.transform = `translate(${x * -10}px, ${y * -8}px)`;
     });
-    heroSection.addEventListener('mouseleave', () => {
-      graphic.style.transform = 'translate(0,0)';
-    });
+    hero.addEventListener('mouseleave', () => { graphic.style.transform = 'translate(0,0)'; });
   }
 
+  // Entrance reveals
+  const revealEls = document.querySelectorAll('.reveal');
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    revealEls.forEach(el => el.classList.add('is-in'));
+  } else {
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add('is-in'); revealObs.unobserve(entry.target); }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => revealObs.observe(el));
+  }
+
+  // Scroll spy
   const sections = ['about','focus','career'].map(id => document.getElementById(id));
   const navLinks = Array.from(document.querySelectorAll('.nav__links a'));
   const spy = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       const link = navLinks.find(a => a.getAttribute('href') === '#' + entry.target.id);
-      if (!link) return;
-      if (entry.isIntersecting) {
+      if (link && entry.isIntersecting) {
         navLinks.forEach(a => a.classList.remove('is-active'));
         link.classList.add('is-active');
       }
@@ -386,16 +504,13 @@
   }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
   sections.forEach(s => s && spy.observe(s));
 
-  const timelineItems = document.querySelectorAll('.timeline__item');
+  // Timeline bubbles fill coral as they scroll in
   const tlObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        tlObserver.unobserve(entry.target);
-      }
+      if (entry.isIntersecting) { entry.target.classList.add('is-visible'); tlObserver.unobserve(entry.target); }
     });
   }, { threshold: 0.4 });
-  timelineItems.forEach(item => tlObserver.observe(item));
+  document.querySelectorAll('.timeline__item').forEach(item => tlObserver.observe(item));
 </script>
 
 </body>
