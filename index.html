@@ -127,21 +127,6 @@
   .focus-item h3{font-size:18px; font-weight:600; font-family:var(--sans); letter-spacing:0;}
   .focus-item p{margin-top:12px; color:var(--slate); font-size:14.5px; line-height:1.65;}
 
-  /* Work */
-  .work__featured{padding:44px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); display:grid; grid-template-columns:1.15fr 0.85fr; gap:48px; align-items:center; margin-bottom:0;}
-  .work__meta{font-size:13px; color:var(--brass); font-weight:600; margin-bottom:14px;}
-  .work__featured h3{font-size:26px; max-width:14ch; font-weight:440;}
-  .work__featured p{margin-top:16px; color:var(--ink-soft); font-size:15.5px; max-width:52ch;}
-  .work__spark{width:100%; height:auto;}
-  .work__grid{display:grid; grid-template-columns:repeat(3, 1fr);}
-  .work-card{padding:32px 32px 32px 0; border-right:1px solid var(--line); border-top:2px solid transparent; transition:border-top-color .25s ease, transform .25s ease;}
-  .work-card:nth-child(3){border-right:none;}
-  .work-card:not(:first-child){padding-left:32px;}
-  .work-card:hover{border-top-color:var(--brass); transform:translateY(-2px);}
-  .work-card h4{font-size:17px; max-width:16ch; font-weight:600; font-family:var(--sans); letter-spacing:0;}
-  .work-card p{margin-top:12px; color:var(--slate); font-size:14px; line-height:1.6;}
-  .work-card .work__meta{margin-bottom:12px;}
-
   /* Career */
   .timeline{position:relative; padding-left:32px;}
   .timeline::before{content:''; position:absolute; left:4px; top:6px; bottom:6px; width:1px; background:var(--line);}
@@ -153,16 +138,6 @@
   .timeline__item h4{margin-top:8px; font-size:18px; font-weight:460;}
   .timeline__item .timeline__place{margin-top:4px; color:var(--slate); font-size:13.5px;}
   .timeline__item p{margin-top:12px; color:var(--ink-soft); font-size:15px; max-width:60ch;}
-
-  /* Toolkit */
-  .toolkit__grid{display:grid; grid-template-columns:repeat(4, 1fr);}
-  .toolkit__group{padding:0 24px 0 0; border-right:1px solid var(--line);}
-  .toolkit__group:last-child{border-right:none;}
-  .toolkit__group:not(:first-child){padding-left:24px;}
-  .toolkit__group h4{font-size:13px; font-family:var(--sans); font-weight:600; color:var(--slate);}
-  .toolkit__group ul{margin-top:16px;}
-  .toolkit__group li{font-size:15px; color:var(--ink-soft); padding:5px 0;}
-  .toolkit__cert{margin-top:16px; padding-top:14px; border-top:1px solid var(--line); font-size:12.5px; color:var(--slate); line-height:1.5;}
 
   /* Contact */
   .contact{background:var(--surface); border-top:1px solid var(--line);}
@@ -190,22 +165,12 @@
     .focus-grid{grid-template-columns:1fr;}
     .focus-item{border-right:none; border-bottom:1px solid var(--line); padding:28px 0;}
     .focus-item:not(:first-child){padding-left:0;}
-    .work__featured{grid-template-columns:1fr;}
-    .work__grid{grid-template-columns:1fr;}
-    .work-card{border-right:none; border-bottom:1px solid var(--line); padding:28px 0;}
-    .work-card:not(:first-child){padding-left:0;}
-    .toolkit__grid{grid-template-columns:repeat(2, 1fr); row-gap:32px;}
-    .toolkit__group{border-right:none;}
-    .toolkit__group:nth-child(odd){padding-right:24px;}
-    .toolkit__group:nth-child(even){padding-left:24px;}
     .stats__row{grid-template-columns:1fr;}
     .stats__item{border-left:none; border-top:1px solid var(--line);}
     .stats__item:first-child{border-top:none;}
     .nav__links{display:none;}
   }
   @media (max-width:640px){
-    .toolkit__grid{grid-template-columns:1fr;}
-    .toolkit__group{padding-left:0 !important; padding-right:0 !important; border-bottom:1px solid var(--line); padding-bottom:24px;}
     .contact__links{flex-direction:column; gap:18px;}
     .footer{flex-direction:column; gap:8px; align-items:flex-start;}
   }
@@ -261,7 +226,7 @@
         <h2>How I work</h2>
       </div>
       <div class="about__body">
-        <p>I've spent the last 15 years in the messy middle of enterprise IT, where ambitious data strategy and digital transformations meets legacy systems, old processes and competing stakeholders. My job is making the two sides meet without anyone's Outlook exploding.</p>
+        <p>I've spent the last 15 years in the messy middle of enterprise IT, where ambitious data strategy and digital transformations meet legacy systems, old processes and competing stakeholders. My job is making the two sides meet without anyone's Outlook exploding.</p>
         <p>That means running scrum meetings with the team in the morning and reviewing data architecture with engineers in the afternoon. I care more about whether a reporting landscape survives and is easy to maintain than whether its architecture diagram looks clean in the deck.</p>
       </div>
     </div>
@@ -407,7 +372,7 @@
     });
   }
 
-  const sections = ['about','focus','work','career','toolkit'].map(id => document.getElementById(id));
+  const sections = ['about','focus','career'].map(id => document.getElementById(id));
   const navLinks = Array.from(document.querySelectorAll('.nav__links a'));
   const spy = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
